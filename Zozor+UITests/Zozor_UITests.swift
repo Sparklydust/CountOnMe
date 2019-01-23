@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import CountOnMe
 
 class Zozor_UITests: XCTestCase {
         
