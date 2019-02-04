@@ -77,7 +77,7 @@ class ViewController: UIViewController {
 
   @IBAction func equal() {
     if !calculatorLogic.isExpressionCorrect {
-      showAlert("One operation at a time!")
+      showAlert("No operation to get a result from!")
     }
     else {
       let total = calculatorLogic.calculateTotal()
@@ -122,7 +122,7 @@ class ViewController: UIViewController {
     textView.text = text
   }
 
-  // To have a empty String after an operator is pressed
+  // To have a empty String after an operator is added
   private func addSpace() {
     calculatorLogic.stringNumbers.append("")
     updateDisplay()

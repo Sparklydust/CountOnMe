@@ -19,16 +19,13 @@ struct CalculatorLogic {
   var isExpressionCorrect: Bool {
     if let stringNumber = stringNumbers.last {
       if stringNumber.isEmpty {
-        if stringNumbers.count == 1 {
-          return false
-        }
         return false
       }
     }
     return true
   }
 
-  // Check if there is not already an operator
+  // Check if there is already an operator
   var canAddOperator: Bool {
     if let stringNumber = stringNumbers.last {
       if stringNumber.isEmpty {
@@ -38,7 +35,7 @@ struct CalculatorLogic {
     return true
   }
 
-  // Check if there is not already a dot
+  // Check if there is already a dot
   var canAddDecimal: Bool {
     if let strings = stringNumbers.last {
       if strings.contains(".") || strings.isEmpty {
@@ -67,9 +64,9 @@ struct CalculatorLogic {
 
   // Algorithmic Method for Mathematical Model
   func calculateTotal() -> Double {
-    var total: Double = 0
-    var pendingOperand = 0.0
+    var pendingOperand: Double = 0
     var pendingOperation = ""
+    var total: Double = 0
 
     func performPendingOperation(operand: Double, operation: String, total: Double) -> Double {
       switch operation {
@@ -98,8 +95,7 @@ struct CalculatorLogic {
           total /= number
         case "×":
           total *= number
-        default:
-          break
+        default: ()
         }
       }
     }
