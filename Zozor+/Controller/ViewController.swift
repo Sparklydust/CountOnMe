@@ -36,43 +36,19 @@ class ViewController: UIViewController {
   }
 
   @IBAction func divided(_ sender: Any) {
-    if calculatorLogic.canAddOperator {
-      calculatorLogic.operators.append("÷")
-      addSpace()
-    }
-    else {
-      showAlert("One operator at a time!")
-    }
+    addOperator("÷")
   }
 
   @IBAction func multiplied(_ sender: Any) {
-    if calculatorLogic.canAddOperator {
-      calculatorLogic.operators.append("×")
-      addSpace()
-    }
-    else {
-      showAlert("One operator at a time!")
-    }
+    addOperator("×")
   }
 
   @IBAction func plus() {
-    if calculatorLogic.canAddOperator {
-      calculatorLogic.operators.append("+")
-      addSpace()
-    }
-    else {
-      showAlert("One operator at a time!")
-    }
+    addOperator("+")
   }
 
   @IBAction func minus() {
-    if calculatorLogic.canAddOperator {
-      calculatorLogic.operators.append("-")
-      addSpace()
-    }
-    else {
-      showAlert("One operator at a time!")
-    }
+    addOperator("-")
   }
 
   @IBAction func equal() {
@@ -102,6 +78,19 @@ class ViewController: UIViewController {
   }
 
   //MARK: - Controller Methods
+  // Method to add operator when user press the one needed
+  func addOperator(_ operators: String) {
+    if calculatorLogic.canAddOperator {
+      calculatorLogic.operators.append(operators)
+      calculatorLogic.stringNumbers.append("")
+      updateDisplay()
+    }
+    else {
+      showAlert("One operator at a time!")
+    }
+  }
+
+  // Shows UIAlert on screen
   private func showAlert(_ message: String) {
     let alertVC = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
     alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
@@ -120,12 +109,6 @@ class ViewController: UIViewController {
       text += stringNumber
     }
     textView.text = text
-  }
-
-  // To have a empty String after an operator is added
-  private func addSpace() {
-    calculatorLogic.stringNumbers.append("")
-    updateDisplay()
   }
 
   // Reset user's screen

@@ -87,9 +87,11 @@ class Zozor_Tests: XCTestCase {
     XCTAssertEqual(calculatorLogic.calculateTotal(), 19.00)
   }
 
-  // Test the default switch statement
-  func testDefaultValueOfTheSwitchStatement() {
-    XCTAssertEqual(calculatorLogic.calculateTotal(), 0.0)
+  // Test division by zero that should return infinity as a result
+  func testGiven5ToCalculate_whenDividedBy0_ThenResultIsInfinity() {
+    calculatorLogic.stringNumbers = ["5", "0"]
+    calculatorLogic.operators = ["+", "÷"]
+    XCTAssertEqual(calculatorLogic.calculateTotal(), .infinity)
   }
 
   //MARK: - Test clear() method
